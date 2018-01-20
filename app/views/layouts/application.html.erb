@@ -3,12 +3,29 @@
   <head>
     <title>Leonard</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <div class="container">
+        
+    <!-- As a link -->
+    <nav class="navbar navbar-toggleable-md fixed-top navbar-inverse bg-primary">
+      <div class="container">
+      <div class="pull-right">
+        <% if current_user %>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary'%>        
+        <% else %>
+          <%= link_to 'login', new_user_session_path, class: 'btn btn-primary'%>
+        <% end %>
+      </div>
+    </div>
+    </nav>
+    <div class="container navbar-gap">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
+    </div>
   </body>
 </html>
